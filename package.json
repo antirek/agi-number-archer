@@ -1,0 +1,24 @@
+{
+  "name": "agi-number-archer",
+  "version": "1.0.0",
+  "description": "AGI server for find concordance of number and region code",
+  "main": "app.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "ding-dong": "^0.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antirek/agi-number-archer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antirek/agi-number-archer/issues"
+  },
+  "homepage": "https://github.com/antirek/agi-number-archer"
+}
