@@ -1,9 +1,11 @@
 
 var config = require('./config'),
     agiServer = require('ding-dong'),
-    handler = require('./lib/handler');
+    handler = require('./lib/handler'),
+    mongoose = require('mongoose');
 
 var debug = config['debug'];
+mongoose.connect(config.mongo.connectionString);
 
 agiServer
 .createServer(function (context) {
