@@ -8,7 +8,7 @@ Install
 
 # Step 1. Load and install app
 
-> git clone http://github.com/antirek/agi-number-archer
+> git clone https://github.com/antirek/agi-number-archer.git
 
 > cd agi-number-archer
 
@@ -31,7 +31,7 @@ write dialplan for using AGI in */etc/asterisk/extensions.conf*
 
 `````
 [incoming]
-exten => 88001234567,1,Set(incoming_number,${CALLERID(num)})
+exten => 88001234567,1,Set(incoming_number=${CALLERID(num)})
 exten => 88001234567,n,AGI(agi://localhost:3000,${incoming_number})
 exten => 88001234567,n,GotoIf($[${REGION_CODE}=24]?Local/krasnoyarsk@queue:)
 exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?Local/moscow@queue:Local/another@queue)
