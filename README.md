@@ -29,6 +29,14 @@ set mongodb connectionString and collection
 
 write dialplan for using AGI in */etc/asterisk/extensions.conf*
 
+exec AGI right
+
+$host - host with running agi-number-archer
+
+$number - number of caller for check
+
+**exten => extension,prio,AGI(agi://$host:port,$number)**
+
 `````
 [incoming]
 exten => 88001234567,1,Set(incoming_number=${CALLERID(num)})
