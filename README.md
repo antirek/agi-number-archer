@@ -39,10 +39,10 @@ $number - number of caller for check
 
 `````
 [incoming]
-exten => 88001234567,1,Set(incoming_number=${CALLERID(num)})
-exten => 88001234567,n,AGI(agi://localhost:3000,${incoming_number})
-exten => 88001234567,n,GotoIf($[${REGION_CODE}=24]?Local/krasnoyarsk@queue:)
-exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?Local/moscow@queue:Local/another@queue)
+exten => 88001234567,1,Set(caller_num=${CALLERID(num)})
+exten => 88001234567,n,AGI(agi://localhost:3000,${caller_num})
+exten => 88001234567,n,GotoIf($[${REGION_CODE}=24]?outbound,krasnoyarsk,1:)
+exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?outbound,moscow,1:outbound,other,1)
 
 `````
 
