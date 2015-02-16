@@ -7,6 +7,7 @@ module.exports = {
     },
     asterisk: {
     	agi_param_name: 'agi_arg_1',
-    	dialplan_var: 'REGION_CODE'
+    	dialplan_var: 'REGION_CODE',
+        beep: true
     }
 };
