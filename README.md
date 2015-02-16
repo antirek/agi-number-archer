@@ -1,6 +1,6 @@
 # agi-number-archer
 
-AGI server for find concordance of number and region code
+AGI server for find concordance of number and region code of Russia
 
 
 Install
@@ -58,12 +58,13 @@ exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?outbound,moscow,1:outbound,ot
     port: 3000,   // port
     debug: true,  // show debug info
     mongo: {      // mongo settings
-      connectionString: 'mongodb://localhost/test',  
-      collection: 'test_insert'
+      connectionString: 'mongodb://localhost/regions',  
+      collection: 'regions'
     },
     asterisk: {   // asterisk variables
       agi_param_name: 'agi_arg_1',
-      dialplan_var: 'REGION_CODE'  // returned dialplan variable (see installation step 4) 
+      dialplan_var: 'REGION_CODE',  // returned dialplan variable (see installation step 4)
+      beep: false  // enable if want listen when agi work : )
     }
 };
 

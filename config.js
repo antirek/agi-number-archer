@@ -2,8 +2,8 @@ module.exports = {
     port: 3000,
     debug: true,
     mongo: {
-    	connectionString: 'mongodb://localhost/test',
-    	collection: 'test_insert'
+    	connectionString: 'mongodb://localhost/regions',
+    	collection: 'regions'
     },
     asterisk: {
     	agi_param_name: 'agi_arg_1',
