@@ -6,11 +6,14 @@
   "dependencies": {
     "async": "^0.9.0",
     "ding-dong": "^0.0.6",
-    "mongoose": "^3.8.23"
+    "mongoose": "^3.8.23",
+    "q": "^1.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.2.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",

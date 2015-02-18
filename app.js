@@ -1,4 +1,3 @@
-
 var config = require('./config'),
     agiServer = require('ding-dong'),
     handler = require('./lib/handler'),
@@ -8,11 +7,11 @@ var debug = config['debug'];
 mongoose.connect(config.mongo.connectionString);
 
 agiServer
-.createServer(function (context) {
-    handler(context, debug);
-})
-.listen(config.port);
+    .createServer(function (context) {
+        handler(context, debug);
+    })
+    .listen(config.port);
 
 if (debug) {
-	console.log("server started");
+    console.log("server started");
 }
