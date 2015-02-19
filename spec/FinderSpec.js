@@ -54,7 +54,7 @@ describe('Finder', function () {
             done();
         });
     });
-    it('promise call reject if findOne return err', function (done) {
+    it('promise call reject if findOne return error', function (done) {
         var expectedErrorMessage = 'test error';
         dbModel = {
             findOne: function (query, callback) {
