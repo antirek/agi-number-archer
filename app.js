@@ -1,18 +1,21 @@
+var agiServer = require('ding-dong');
+var mongoose = require('mongoose');
+var ResourceSchema = require('./lib/resource');
+var Finder = require('./lib/finder');
+var Handler = require('./lib/handler');
+var config = require('./config');
 
-var config = require('./config'),
-    agiServer = require('ding-dong'),
-    handler = require('./lib/handler'),
-    mongoose = require('mongoose');
 
-var debug = config['debug'];
+var Resource = mongoose.model(
+    'Resource', new ResourceSchema(config.mongo.collection)
+);
+var handler = new Handler(new Finder(Resource), config.asterisk);
 mongoose.connect(config.mongo.connectionString);
+var debug = config['debug'];
 
-agiServer
-.createServer(function (context) {
-    handler(context, debug);
-})
-.listen(config.port);
+agiServer.createServer(handler.handle)
+    .listen(config.port);
 
-if (debug) {
-	console.log("server started");
+if (config['debug']) {
+    console.log("server started");
 }
