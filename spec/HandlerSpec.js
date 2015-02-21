@@ -11,6 +11,7 @@ describe('Handler', function () {
         agiParamName: 'agiParam',
         resultDialPlanVarName: 'resultVar'
     };
+
     var finder = {
         findCodeForNumber: function (number) {
             expect(number).toBe(expectedNumber);
@@ -19,6 +20,13 @@ describe('Handler', function () {
             return defer.promise;
         }
     };
+
+    var logger = {
+        info: function (message, object){
+            return;
+        }
+    };
+
     beforeEach(function () {
         context = {
             on: function (eventName, callback) {
@@ -37,7 +45,7 @@ describe('Handler', function () {
                 callback();
             }
         };
-        handler = new Handler(finder, config);
+        handler = new Handler(finder, logger, config);
     });
     it('should use context "variables" event', function (done) {
         context.on = function (eventName) {
