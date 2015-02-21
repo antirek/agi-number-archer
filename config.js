@@ -10,7 +10,9 @@ module.exports = {
         beep: true
     },
     logger: {
-        console: true,
+        console: {
+            colorize: true            
+        },
         syslog: {
             host: 'localhost'            
         },

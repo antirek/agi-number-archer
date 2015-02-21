@@ -65,6 +65,18 @@ exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?outbound,moscow,1:outbound,ot
       agiParamName: 'agi_arg_1',
       resultDialPlanVarName: 'REGION_CODE',  // returned dialplan variable (see installation step 4)
       beep: false  // enable if want listen when agi work : )
+    },
+    logger: {      //write log use npm winston
+        console: {            //to console
+            colorize: true            
+        },
+        syslog: {             //to syslog
+            host: 'localhost'            
+        },
+        file: {               //to file
+            filename: '/var/log/agi-number-archer.log',
+            json: false
+        }
     }
 };
 

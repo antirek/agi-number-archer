@@ -9,7 +9,6 @@ var Logger = require('./lib/logger');
 var Server = function (config) {
 
     this.start = function () {
-
         var Resource = mongoose.model(
           'Resource', new ResourceSchema(config.mongo.collection)
         );
