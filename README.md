@@ -35,7 +35,7 @@ $host - host with running agi-number-archer
 
 $number - number of caller for check
 
-**exten => extension,prio,AGI(agi://$host:port,$number)**
+**exten => extension,priority,AGI(agi://$host:port,$number)**
 
 `````
 [incoming]
@@ -62,12 +62,11 @@ exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?outbound,moscow,1:outbound,ot
       collection: 'regions'
     },
     asterisk: {   // asterisk variables
-      agi_param_name: 'agi_arg_1',
-      dialplan_var: 'REGION_CODE',  // returned dialplan variable (see installation step 4)
+      agiParamName: 'agi_arg_1',
+      resultDialPlanVarName: 'REGION_CODE',  // returned dialplan variable (see installation step 4)
       beep: false  // enable if want listen when agi work : )
     }
 };
-
 
 `````
 
