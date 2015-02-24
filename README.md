@@ -1,31 +1,32 @@
 # agi-number-archer
 
-AGI server for find concordance of number and region code of Russia
+NPM for creating AGI server which find concordance of Russian phone number and region code
+
+## Install
+
+> npm install agi-number-archer --save
+
+## Use
+
+Create app.js
+`````
+var config = require('./config');
+var AgiNumberArcher = require('agi-number-archer');
+
+var archer = new AgiNumberArcher(config);
+archer.start();
+`````
+And run
+
+> node app.js
+
+## More details
+
+See [agi-number-archer-app](http://github.com/antirek/agi-number-archer-app)
 
 
-Install
-=======
 
-# Step 1. Load and install app
-
-> git clone https://github.com/antirek/agi-number-archer.git
-
-> cd agi-number-archer
-
-> npm install
-
-
-# Step 2. Load data to mongodb
-
-use npm [numcap-regions](http://github.com/antirek/numcap-regions)
-
-
-# Step 3. Configure app via *config.js*
-
-set mongodb connectionString and collection
-
-
-# Step 4. Configure asterisk
+## Configure asterisk
 
 write dialplan for using AGI in */etc/asterisk/extensions.conf*
 
@@ -37,21 +38,19 @@ $number - number of caller for check
 
 **exten => extension,priority,AGI(agi://$host:port,$number)**
 
+Sample dialplan
+
 `````
 [incoming]
 exten => 88001234567,1,Set(caller_num=${CALLERID(num)})
 exten => 88001234567,n,AGI(agi://localhost:3000,${caller_num})
 exten => 88001234567,n,GotoIf($[${REGION_CODE}=24]?outbound,krasnoyarsk,1:)
 exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?outbound,moscow,1:outbound,other,1)
-
 `````
 
-# Step 5. Run app
-
-> node app.js
 
 
-## More about config.js
+## Sample config.js
 
 `````
 {
