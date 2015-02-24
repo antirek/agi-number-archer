@@ -1,8 +1,8 @@
 {
   "name": "agi-number-archer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "AGI server for find concordance of number and region code",
-  "main": "app.js",
+  "main": "index.js",
   "dependencies": {    
     "ding-dong": "^0.0.8",
     "mongoose": "^3.8.23",
