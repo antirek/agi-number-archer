@@ -6,7 +6,8 @@ module.exports = {
     },
     asterisk: {
         agiParamName: 'agi_arg_1',
-        resultDialPlanVarName: 'REGION_CODE',
+        resultDialPlanVarName1: 'REGION_CODE',
+        resultDialPlanVarName2: 'COUNTY_CODE'
         beep: true
     },
     logger: {
