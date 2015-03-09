@@ -20,9 +20,9 @@ And run
 
 > node app.js
 
-## More details
+## More fast?
 
-See [agi-number-archer-app](http://github.com/antirek/agi-number-archer-app)
+Clone and use [agi-number-archer-app](http://github.com/antirek/agi-number-archer-app)
 
 
 
@@ -42,10 +42,17 @@ Sample dialplan
 
 `````
 [incoming]
-exten => 88001234567,1,Set(caller_num=${CALLERID(num)})
-exten => 88001234567,n,AGI(agi://localhost:3000,${caller_num})
+exten => 88001234567,n,AGI(agi://localhost:3000,${CALLERID(num)})
 exten => 88001234567,n,GotoIf($[${REGION_CODE}=24]?outbound,krasnoyarsk,1:)
 exten => 88001234567,n,GotoIf($[${REGION_CODE}=50]?outbound,moscow,1:outbound,other,1)
+`````
+or
+
+`````
+[incoming]
+exten => 88001234567,n,AGI(agi://localhost:3000,${CALLERID(num))
+exten => 88001234567,n,GotoIf($[${COUNTY_CODE}=5]?outbound,krasnoyarsk,1:)
+exten => 88001234567,n,GotoIf($[${COUNTY_CODE}=1]?outbound,moscow,1:outbound,other,1)
 `````
 
 
