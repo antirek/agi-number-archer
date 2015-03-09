@@ -4,6 +4,7 @@ describe('Finder', function () {
     var dbModel;
     var finder;
     var expectedCode;
+    var expectedCounty = 2;
     var testNumber = '83912332211';
     beforeEach(function () {
         function generateRandomCode() {
@@ -29,7 +30,8 @@ describe('Finder', function () {
                 expect(query).toEqual(expectedQuery);
                 callback(null, {
                     region: {
-                        code: expectedCode
+                        code: expectedCode,
+                        county: expectedCounty
                     }
                 });
             }
@@ -37,7 +39,7 @@ describe('Finder', function () {
         finder = new Finder(dbModel);
         var resultPromise = finder.findCodeForNumber(testNumber);
         resultPromise.then(function (code) {
-            expect(code).toBe(expectedCode);
+            expect(code).toEqual([expectedCode, expectedCounty]);
             done();
         });
     });
@@ -50,7 +52,7 @@ describe('Finder', function () {
         finder = new Finder(dbModel);
         var resultPromise = finder.findCodeForNumber(testNumber);
         resultPromise.then(function (code) {
-            expect(code).toBe('NULL');
+            expect(code).toEqual(['NULL', 'NULL']);
             done();
         });
     });

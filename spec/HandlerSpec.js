@@ -5,18 +5,20 @@ describe('Handler', function () {
     var handler;
     var context;
     var expectedRegionCode = 24;
+    var expectedCountyCode = 5;
     var expectedNumber = '83912223344';
     var config = {
         beep: false,
         agiParamName: 'agiParam',
-        resultDialPlanVarName: 'resultVar'
+        resultDialPlanVarName1: 'resultVar1',
+        resultDialPlanVarName2: 'resultVar2'
     };
 
     var finder = {
         findCodeForNumber: function (number) {
             expect(number).toBe(expectedNumber);
             var defer = Q.defer();
-            defer.resolve(expectedRegionCode);
+            defer.resolve([expectedRegionCode, expectedCountyCode]);
             return defer.promise;
         }
     };
@@ -81,7 +83,7 @@ describe('Handler', function () {
     });
     it('should call context setVariable with expected region code', function (done) {
         var expectedAgiVarName = 'testAgiVar';
-        config.resultDialPlanVarName = expectedAgiVarName;
+        config.resultDialPlanVarName1 = expectedAgiVarName;        
         context.setVariable = function (varName, value) {
             expect(varName).toBe(expectedAgiVarName);
             expect(value).toBe(expectedRegionCode);
