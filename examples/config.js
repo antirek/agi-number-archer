@@ -1,5 +1,5 @@
 module.exports = {
-    port: 3007,
+    port: 3000,
     mongo: {
         connectionString: 'mongodb://localhost/regions',
         collection: 'regions'
@@ -12,10 +12,10 @@ module.exports = {
     },
     logger: {
         console: {
-            colorize: true            
+            colorize: true
         },
         syslog: {
-            host: 'localhost'            
+            host: 'localhost'
         },
         file: {
             filename: '/var/log/agi-number-archer.log',
