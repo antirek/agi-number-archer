@@ -61,18 +61,19 @@ exten => 88001234567,n,GotoIf($[${COUNTY_CODE}=1]?outbound,moscow,1:outbound,oth
 
 `````
 {
-    port: 3000,   // port
-    debug: true,  // show debug info
-    mongo: {      // mongo settings
+    port: 3000,         // port
+    debug: true,        // show debug info
+    mongo: {            // mongo settings
       connectionString: 'mongodb://localhost/regions',  
       collection: 'regions'
     },
-    asterisk: {   // asterisk variables
+    asterisk: {         // asterisk variables
       agiParamName: 'agi_arg_1',
-      resultDialPlanVarName: 'REGION_CODE',  // returned dialplan variable (see installation step 4)
-      beep: false  // enable if want listen when agi work : )
+      resultDialPlanVarName1: 'REGION_CODE',    // returned dialplan variable REGION_CODE
+      resultDialPlanVarName2: 'COUNTY_CODE',    // returned dialplan variable COUNTY_CODE
+      beep: false       // enable if want listen when agi work : )
     },
-    logger: {      //write log use npm winston
+    logger: {           //write log use npm winston
         console: {            //to console
             colorize: true            
         },
