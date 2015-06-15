@@ -1,14 +1,13 @@
 {
   "name": "agi-number-archer",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "AGI server for find concordance of number and region code",
   "main": "index.js",
   "dependencies": {    
-    "ding-dong": "^0.0.8",
-    "mongoose": "^3.8.23",
+    "ding-dong": "0.1.1",
+    "mongoose": "^4.0.3",
     "q": "^1.1.2",
-    "winston": "^0.9.0",
-    "winston-syslog": "^1.0.0"
+    "winston": "^0.9.0"
   },
   "devDependencies": {
     "jasmine": "^2.2.1"

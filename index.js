@@ -1,4 +1,4 @@
-var dingDong = require('ding-dong');
+var AGIServer = require('ding-dong');
 var mongoose = require('mongoose');
 
 var ResourceSchema = require('./lib/resource');
@@ -19,9 +19,8 @@ var Server = function (config) {
 
         mongoose.connect(config.mongo.connectionString);
 
-        dingDong
-          .createServer(handler.handle)
-          .listen(config.port);
+        var agiServer = AGIServer(handler.handle);
+        agiServer.start(config.port);
 
         logger.info("server started");
     };
