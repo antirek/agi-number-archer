@@ -33,7 +33,7 @@ describe('Handler', function () {
 
         var onEvent = function (event) {
             expect(event).toBe('variables');
-            return Q.resolve({agiParam: expectedNumber});
+            return Q.resolve();
         };
 
         var answer = function () {            
