@@ -1,6 +1,6 @@
 {
   "name": "agi-number-archer",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "AGI server for find concordance of number and region code",
   "main": "index.js",
   "dependencies": {
