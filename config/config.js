@@ -9,14 +9,5 @@ module.exports = {
         resultDialPlanVarName1: 'REGION_CODE',
         resultDialPlanVarName2: 'COUNTY_CODE',
         beep: true
-    },
-    logger: {
-        console: {
-            colorize: true
-        },
-        file: {
-            filename: '/var/log/agi-number-archer.log',
-            json: false
-        }
     }
 };

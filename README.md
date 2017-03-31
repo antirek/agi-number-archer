@@ -4,25 +4,11 @@ NPM for creating AGI server which find concordance of Russian phone number and r
 
 ## Install
 
-> npm install agi-number-archer --save
+> git clone agi-number-archer 
 
-## Use
-
-Create app.js
-`````
-var config = require('./config');
-var AgiNumberArcher = require('agi-number-archer');
-
-var archer = new AgiNumberArcher(config);
-archer.start();
-`````
 And run
 
 > node app.js
-
-## More fast?
-
-Clone and use [agi-number-archer-app](http://github.com/antirek/agi-number-archer-app)
 
 
 
@@ -59,35 +45,7 @@ exten => 88001234567,n,GotoIf($[${COUNTY_CODE}=1]?outbound,moscow,1:outbound,oth
 
 ## Sample config.js
 
-`````
-{
-    port: 3000,         // port
-    debug: true,        // show debug info
-    mongo: {            // mongo settings
-      connectionString: 'mongodb://localhost/regions',  
-      collection: 'regions'
-    },
-    asterisk: {         // asterisk variables
-      agiParamName: 'agi_arg_1',
-      resultDialPlanVarName1: 'REGION_CODE',    // returned dialplan variable REGION_CODE
-      resultDialPlanVarName2: 'COUNTY_CODE',    // returned dialplan variable COUNTY_CODE
-      beep: false       // enable if want listen when agi work : )
-    },
-    logger: {           //write log use npm winston
-        console: {            //to console
-            colorize: true            
-        },
-        syslog: {             //to syslog
-            host: 'localhost'            
-        },
-        file: {               //to file
-            filename: '/var/log/agi-number-archer.log',
-            json: false
-        }
-    }
-};
-
-`````
+see ./config
 
 
 Errors?!

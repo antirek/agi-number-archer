@@ -5,21 +5,11 @@ var Joi = require('joi');
 var ResourceSchema = require('./lib/resource');
 var Finder = require('./lib/finder');
 var Handler = require('./lib/handler');
-var Logger = require('./lib/logger');
 var ConfigSchema = require('./lib/configSchema');
+var console = require('tracer').colorConsole();
 
 
 var Server = function (config) {
-
-    var logger; 
-
-    var log = function (text, object) {
-        if (logger) {
-            logger.info(text, object);
-        } else {
-            console.log(text, object);
-        }
-    };
 
     var validate = function (callback) {
         Joi.validate(config, ConfigSchema, callback);
@@ -30,26 +20,26 @@ var Server = function (config) {
           'Resource', new ResourceSchema(config.mongo.collection)
         );
 
-        logger = new Logger(config.logger);
-
-        var handler = new Handler(new Finder(Resource), logger, config.asterisk);
+        var handler = new Handler(new Finder(Resource), config.asterisk);
 
         mongoose.connect(config.mongo.connectionString);
 
         var agiServer = AGIServer(handler.handle);
         agiServer.start(config.port);
 
-        log("server started");
+        console.log("server started");
     };
 
     this.start = function () {
         validate(function (err, value) {
             if (err) {
-                log('config.js have errors', err);
-            } else {
-                log('config.js validated successfully!');
-                init();    
+                console.log('config.js have errors', err);
+                return;
             }
+            
+            console.log('config.js validated successfully!');
+            init();    
+            
         });
     };
 };

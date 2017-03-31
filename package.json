@@ -4,11 +4,12 @@
   "description": "AGI server for find concordance of number and region code",
   "main": "index.js",
   "dependencies": {
+    "config": "^1.25.1",
     "ding-dong": "0.1.1",
     "joi": "^6.6.1",
     "mongoose": "^4.0.3",
     "q": "^1.1.2",
-    "winston": "^0.9.0"
+    "tracer": "^0.8.7"
   },
   "devDependencies": {
     "jasmine": "^2.2.1"
